@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.demo.infrastructure.mapper.EmployeeExtractExecutionMapper">
+    <resultMap id="employeeExtractExecutionResultMap" type="jp.demo.infrastructure.entity.EmployeeExtractExecution">
+        <id column="employee_id" property="employeeId" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="last_updated" property="lastUpdated" jdbcType="DATE"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="employeeExtractExecutionResultMap">
+        select employee_id, status, create_time, last_updated
+        from employee_extract_execution
+        order by create_time
+    </select>
+
+    <insert id="insertEmployeeExtractExecution"
+        parameterType="jp.demo.infrastructure.entity.EmployeeExtractExecution">
+        insert into employee_extract_execution (
+            employee_id,
+            status,
+            create_time,
+            last_updated
+        ) values (
+            #{employeeId},
+            #{status},
+            #{createTime},
+            #{lastUpdated}
+        )
+    </insert>
+
+</mapper>
