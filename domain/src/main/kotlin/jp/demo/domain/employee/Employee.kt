@@ -1,5 +1,6 @@
-package jp.demo.domain.employee
+package jp.demo.employee
 
+import jp.demo.infrastructure.entity.Employee
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
@@ -11,7 +12,7 @@ data class Employee(
     var rank: Rank,
     var rate: Int,
 ) {
-    constructor(entity: jp.demo.infrastructure.entity.Employee) :
+    constructor(entity: Employee) :
         this(
             entity.id,
             Name(entity.name),

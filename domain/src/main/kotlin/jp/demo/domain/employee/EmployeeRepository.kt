@@ -1,4 +1,4 @@
-package jp.demo.domain.employee
+package jp.demo.employee
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.fasterxml.jackson.dataformat.csv.CsvMapper
@@ -25,7 +25,8 @@ class EmployeeRepository(
 
     fun insertStatus(employee: Employee, status: Status) {
         employeeExtractExecutionMapper.insertEmployeeExtractExecution(
-            EmployeeExtractExecution(employee.id, status.name, LocalDate.now(), LocalDate.now()))
+            EmployeeExtractExecution(employee.id, status.name, LocalDate.now(), LocalDate.now())
+        )
     }
 
     fun selectAllStatus(): List<EmployeeExtractExecution> {
