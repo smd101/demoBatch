@@ -1,4 +1,4 @@
-package jp.demo.employee
+package jp.demo.domain.employee
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder
 import com.fasterxml.jackson.dataformat.csv.CsvMapper

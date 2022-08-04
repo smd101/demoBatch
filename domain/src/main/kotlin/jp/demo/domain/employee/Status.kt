@@ -1,4 +1,4 @@
-package jp.demo.employee
+package jp.demo.domain.employee
 
 enum class Status {
     ABANDONED,

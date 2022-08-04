@@ -1,4 +1,4 @@
-package jp.demo.employee
+package jp.demo.domain.employee
 
 import jp.demo.infrastructure.entity.Employee
 import java.time.LocalDate
