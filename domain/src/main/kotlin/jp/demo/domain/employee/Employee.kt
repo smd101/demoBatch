@@ -19,6 +19,6 @@ data class Employee(
             entity.birthday,
             ChronoUnit.YEARS.between(entity.birthday, LocalDate.now()).toInt(),
             Rank.valueOf(entity.rank),
-            entity.rate)
-
+            entity.rate
+        )
 }

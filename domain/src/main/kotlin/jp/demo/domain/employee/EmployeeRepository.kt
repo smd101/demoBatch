@@ -6,13 +6,9 @@ import jp.demo.infrastructure.entity.EmployeeExtractExecution
 import jp.demo.infrastructure.mapper.EmployeeExtractExecutionMapper
 import jp.demo.infrastructure.mapper.EmployeeMapper
 import org.springframework.stereotype.Repository
-import java.io.ByteArrayOutputStream
 import java.io.File
-import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
-import java.util.zip.ZipEntry
-import java.util.zip.ZipOutputStream
 
 @Repository
 class EmployeeRepository(
@@ -55,17 +51,23 @@ class EmployeeRepository(
         // C:\Users\xxxxx\AppData\Local\Temp\demoBatch_xxxxxxxx.csv
         File.createTempFile("demoBatch_", ".csv")
             .apply {
-                writeBytes(writeCsvValueAsByte(data.map { OutputEmployee(
-                    it.id,
-                    it.name.lastName,
-                    it.name.firstName,
-                    it.age,
-                    it.birthday.format(
-                        DateTimeFormatter.ofPattern("yyyy/MM/dd")
-                    ),
-                    it.rank.name,
-                    it.rate,
-                ) }))
+                writeBytes(
+                    writeCsvValueAsByte(
+                        data.map {
+                            OutputEmployee(
+                                it.id,
+                                it.name.lastName,
+                                it.name.firstName,
+                                it.age,
+                                it.birthday.format(
+                                    DateTimeFormatter.ofPattern("yyyy/MM/dd")
+                                ),
+                                it.rank.name,
+                                it.rate,
+                            )
+                        }
+                    )
+                )
             }
     }
 
@@ -74,5 +76,4 @@ class EmployeeRepository(
         return csvMapper.writer(csvMapper.schemaFor(T::class.java).withHeader())
             .writeValueAsBytes(data)
     }
-
 }
