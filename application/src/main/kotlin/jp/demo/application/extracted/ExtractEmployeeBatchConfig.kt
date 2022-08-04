@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 @EnableBatchProcessing
-class ExtractEmployeeBatchConfig (
+class ExtractEmployeeBatchConfig(
     private val jobBuilderFactory: JobBuilderFactory,
     private val stepBuilderFactory: StepBuilderFactory,
     private val extractEmployeeTasklet: ExtractEmployeeTasklet,
