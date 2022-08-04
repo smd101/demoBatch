@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.demo.infrastructure.mapper.EmployeeMapper">
+    <resultMap id="employeeResultMap" type="jp.demo.infrastructure.entity.Employee">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="birthday" property="birthday" jdbcType="DATE"/>
+        <result column="rank" property="rank" jdbcType="VARCHAR"/>
+        <result column="rate" property="rate" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="employeeResultMap">
+        select id, name, birthday, rank, rate
+        from employee
+        order by id
+    </select>
+
+    <update id="updateAge" parameterType="jp.demo.infrastructure.entity.Employee">
+        update employee
+        set rank = #{rank},
+        rate = #{rate}
+        where id = #{id}
+    </update>
+</mapper>
